@@ -1,40 +1,34 @@
-#include <map>
-#include <string>
-
-using namespace std;
+#include <QMap>
+#include <QString>
 
 class Config
 {
 public:
-    Config(int32_t argc, char **args);
+    Config(int32_t argc, QStringList &);
 
     bool isValid();
 
-    string inputFileName() const { return m_inputPath; }
+    QString inputFileName() const { return m_inputPath; }
     int32_t inputWidth() const { return m_inputWidth; }
     int32_t inputHeight() const { return m_inputHeight; }
-    string inputColorSpace() const { return m_inputColorspace; }
+    QString inputColorSpace() const { return m_inputColorspace; }
 
-    string outputFileName() const { return m_outputPath; }
+    QString outputFileName() const { return m_outputPath; }
     int32_t outputWidth() const { return m_outputWidth; }
     int32_t outputHeight() const { return m_outputHeight; }
-    string outputColorSpace() const { return m_outputColorspace; }
+    QString outputColorSpace() const { return m_outputColorspace; }
 
 private:
-    bool isNumber(string s);
-    int32_t toNumber(string s);
-
-private:
-    map<string, string> m_inputArgs;
+    QMap<QString, QString> m_inputArgs;
     int32_t m_inputArgCount;
 
-    string m_inputPath;
+    QString m_inputPath;
     int32_t m_inputWidth;
     int32_t m_inputHeight;
-    string m_inputColorspace;
+    QString m_inputColorspace;
 
-    string m_outputPath;
+    QString m_outputPath;
     int32_t m_outputWidth;
     int32_t m_outputHeight;
-    string m_outputColorspace;
+    QString m_outputColorspace;
 };

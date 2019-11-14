@@ -1,15 +1,22 @@
-//cspaceedit.exe -i angel.rgb -iw 720 -ih 1080 -ic RGB24 -o argb.rgb -ow 720 -oh 1080 -oc ARGB
+//TT_Remaster.exe -i angel.rgb -iw 720 -ih 1080 -ic RGB24 -o argb.rgb -ow 720 -oh 1080 -oc ARGB
 #include "Config.h"
 #include "Image.h"
 
-#include <iostream>
-
-using namespace std;
+#include <QCoreApplication>
+#include <QDebug>
 
 int main(int argc, char *argv[])
 {
+    QStringList args = QCoreApplication(argc, argv).arguments();
 
-    Config config(argc, argv);
+    //  hardcode parameters
+    QString inputLine = "TT_Remaster.exe -i angel.rgb -iw 720 -ih 1080 -ic RGB24 -o argb.rgb -ow 720 -oh 1080 -oc ARGB";
+    args = inputLine.split(' ');
+    argc = 17;
+    //  end of the hardcode
+
+    Config config(argc, args);
+
     if (!config.isValid())
         return 1;
 
@@ -18,6 +25,7 @@ int main(int argc, char *argv[])
 //    inputImage.transform(config.inputColorSpace(), config.outputColorSpace());
 //    inputImage.imageExport(config.outputFileName());
 
-    cout << "Done.\n";
+    qInfo() << "\nDone.\n";
+
     return 0;
 }
