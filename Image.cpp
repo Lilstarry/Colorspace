@@ -60,7 +60,7 @@ void Image::imageExport(const QString &path)
     for(int i = 0; i < m_width * m_height; ++i)
     {
         for(int j = 0; j < m_channelsNumber; ++j)
-            blob[i * m_channelsNumber + j] = static_cast<char>(m_dots[i].channels[j]);
+            blob[i * m_channelsNumber + j] = m_dots[i].channels[j];
     }
 
     image.write(blob);

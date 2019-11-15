@@ -1,7 +1,9 @@
+#include <stdint.h>
+
 struct Pixel
 {
 public:
-    char channels[4];
+    uint8_t channels[4];
 
     Pixel()
     {
@@ -9,7 +11,7 @@ public:
             channels[i] = 255;
     }
 
-    void swap(char *channels)
+    void swap(uint8_t *channels)
     {
         //{ "AYUV", "VUYA", "ARGB", "BGRA", "RGB24" };
         for (int i = 0; i < 4; ++i)
