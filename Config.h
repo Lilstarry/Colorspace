@@ -4,7 +4,7 @@
 class Config
 {
 public:
-    Config(int32_t argc, QStringList &);
+    Config(int32_t argc, QStringList &args, QString &path);
 
     bool isValid();
 

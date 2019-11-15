@@ -6,8 +6,7 @@ const int ATTR_AMOUNT = 8;
 const int32_t ARGS_AMOUNT = ATTR_AMOUNT * 2 + 1;
 const QVector<QString> ATTRIBUTES = { "-i", "-iw", "-ih", "-ic", "-o", "-ow", "-oh", "-oc" };
 const QSet<QString> COLORSPACES = { "AYUV", "VUYA", "ARGB", "BGRA", "RGB24" };
-static QString INPUT_PATH = "C:\\Users\\Lilstarry\\source\\repos\\cspaceedit\\Debug\\images-input\\";
-static QString OUTPUT_PATH = "C:\\Users\\Lilstarry\\source\\repos\\cspaceedit\\Debug\\images-output\\";
+const QString IMG_DIR = "/images/";
 
 bool Config::isValid()
 {
@@ -64,7 +63,7 @@ bool Config::isValid()
     return valid;
 }
 
-Config::Config(int32_t argc, QStringList &args)
+Config::Config(int32_t argc, QStringList &args, QString &path)
     : m_inputArgCount(argc)
 {
     //	Input data validation
@@ -93,11 +92,11 @@ Config::Config(int32_t argc, QStringList &args)
     }
 
     bool ok;
-    m_inputPath = INPUT_PATH + m_inputArgs["-i"];
+    m_inputPath = path + IMG_DIR + m_inputArgs["-i"];
     m_inputWidth = m_inputArgs["-iw"].toInt(&ok, 10);
     m_inputHeight = m_inputArgs["-ih"].toInt(&ok, 10);
     m_inputColorspace = m_inputArgs["-ic"];
-    m_outputPath = OUTPUT_PATH + m_inputArgs["-o"];
+    m_outputPath = path + IMG_DIR + m_inputArgs["-o"];
     m_outputWidth = m_inputArgs["-ow"].toInt(&ok, 10);
     m_outputHeight = m_inputArgs["-oh"].toInt(&ok, 10);
     m_outputColorspace = m_inputArgs["-oc"];
