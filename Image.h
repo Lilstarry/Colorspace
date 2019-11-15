@@ -6,6 +6,7 @@ class Image
 {
 public:
     Image(const int32_t width, const int32_t height, const QString &colorspace);
+    ~Image();
 
     void imageImport(const QString &path);
     void imageExport(const QString &path);
@@ -15,10 +16,10 @@ public:
 
     void transform(const QString &inputColorset, const QString &outputColorset);
 
-    void RGB2RGB(int in[], int out[]);
-    void YUV2YUV(int in[], int out[]);
-    void YUV2RGB(int in[], int out[]);
-    void RGB2YUV(int in[], int out[]);
+    void RGB2RGB(const int *in, const int *out);
+    void YUV2YUV(const int *in, const int *out);
+    void YUV2RGB(const int *in, const int *out);
+    void RGB2YUV(const int *in, const int *out);
 
 private:
     Pixel *m_dots;

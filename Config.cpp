@@ -2,9 +2,9 @@
 
 #include <QDebug>
 
-const int ATTR_AMOUNT = 8;
-const int32_t ARGS_AMOUNT = ATTR_AMOUNT * 2 + 1;
 const QVector<QString> ATTRIBUTES = { "-i", "-iw", "-ih", "-ic", "-o", "-ow", "-oh", "-oc" };
+const int ATTR_AMOUNT = ATTRIBUTES.size();
+const int32_t ARGS_AMOUNT = ATTR_AMOUNT * 2 + 1;
 const QSet<QString> COLORSPACES = { "AYUV", "VUYA", "ARGB", "BGRA", "RGB24" };
 const QString IMG_DIR = "/images/";
 

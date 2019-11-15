@@ -17,7 +17,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         Config.cpp \
         Image.cpp \
-        Pixel.cpp \
         main.cpp
 
 # Default rules for deployment.

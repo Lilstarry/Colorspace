@@ -24,6 +24,11 @@ Image::Image(const int32_t width, const int32_t height, const QString &colorspac
     m_dots = new Pixel[m_width * m_height];
 }
 
+Image::~Image()
+{
+    delete m_dots;
+}
+
 void Image::imageImport(const QString &path)
 {
     QFile image(path);
@@ -38,7 +43,7 @@ void Image::imageImport(const QString &path)
     for(int i = 0; i < m_width * m_height; ++i)
     {
         for(int j = 0; j < m_channelsNumber; ++j)
-            m_dots[i].channels[j] = static_cast<uchar>(blob[i * m_channelsNumber + j]);
+            m_dots[i].channels[j] = blob[i * m_channelsNumber + j];
     }
 }
 
@@ -196,7 +201,7 @@ void Image::transform(const QString &inputColorset, const QString &outputColorse
     }
 }
 
-void Image::RGB2RGB(int in[], int out[])
+void Image::RGB2RGB(const int *in, const int *out)
 {
     Pixel temp;
     for (int i = 0; i < m_width * m_height; ++i)
@@ -208,7 +213,7 @@ void Image::RGB2RGB(int in[], int out[])
     }
 }
 
-void Image::YUV2YUV(int in[], int out[])
+void Image::YUV2YUV(const int *in, const int *out)
 {
     Pixel temp;
     for (int i = 0; i < m_width * m_height; ++i)
@@ -220,7 +225,7 @@ void Image::YUV2YUV(int in[], int out[])
     }
 }
 
-void Image::YUV2RGB(int in[], int out[])
+void Image::YUV2RGB(const int *in, const int *out)
 {
     Pixel temp_RGB;
     Pixel temp_YUV;
@@ -270,7 +275,7 @@ void Image::YUV2RGB(int in[], int out[])
     }
 }
 
-void Image::RGB2YUV(int in[], int out[])
+void Image::RGB2YUV(const int *in, const int *out)
 {
     Pixel temp_RGB;
     Pixel temp_YUV;
